@@ -26,3 +26,16 @@ input::placeholder{
   font-size: 15px;
 }
 	
+img,
+svg,
+a,
+button {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-ms-touch-action: pan-y;
+	touch-action: pan-y;
+	-webkit-tap-highlight-color: transparent;
+}
