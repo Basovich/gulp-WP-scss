@@ -2,9 +2,9 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const clean = require('gulp-clean');
-// const cssnano = require('gulp-cssnano');
 const rename = require('gulp-rename');
 const del = require('del');
+const sourcemaps = require('gulp-sourcemaps');
 
 
 sass.compiler = require('node-sass');
@@ -12,6 +12,7 @@ sass.compiler = require('node-sass');
 
 function style() {
   return gulp.src('./src/scss/**/*.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(clean({
       level: 2
@@ -20,11 +21,11 @@ function style() {
       browsers: ['> 0.1%'],
       cascade: false
     }))
-    // .pipe(cssnano())
     .pipe(rename({
       suffix: '.min',
       prefix: ''
     }))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./build/css'));
 }
 
@@ -47,7 +48,3 @@ gulp.task('build', gulp.series(cleaner,
 ));
 
 gulp.task('dev', gulp.series('build', 'watch'));
-
-
-
-
