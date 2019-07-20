@@ -1,7 +1,6 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
-const clean = require('gulp-clean');
 const rename = require('gulp-rename');
 const del = require('del');
 const sourcemaps = require('gulp-sourcemaps');
@@ -13,10 +12,7 @@ sass.compiler = require('node-sass');
 function style() {
   return gulp.src('./src/scss/**/*.scss')
     .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
-    .pipe(clean({
-      level: 2
-    }))
+    .pipe(sass().on('error', sass.logError))   
     .pipe(autoprefixer({
       browsers: ['> 0.1%'],
       cascade: false
