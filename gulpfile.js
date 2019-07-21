@@ -13,10 +13,7 @@ function style() {
   return gulp.src('./src/scss/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))   
-    .pipe(autoprefixer({
-      browsers: ['> 0.1%'],
-      cascade: false
-    }))
+    .pipe(autoprefixer())
     .pipe(rename({
       suffix: '.min',
       prefix: ''
