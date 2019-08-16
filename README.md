@@ -1,2 +1,7 @@
 # gulp-WP-scss
-gulp scss for WP
+Try update project
+__________________________
+npm i -g npm-check-updates
+ncu -u
+npm install
+__________________________
