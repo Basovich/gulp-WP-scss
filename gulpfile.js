@@ -5,8 +5,24 @@ const rename = require('gulp-rename');
 const del = require('del');
 const sourcemaps = require('gulp-sourcemaps');
 const rigger = require('gulp-rigger');
+const browserSync = require('browser-sync').create();
 
 sass.compiler = require('node-sass');
+
+
+// Static server https://www.browsersync.io/docs/gulp
+gulp.task('server', function() {
+  browserSync.init({
+    server: {
+      baseDir: "./build"
+    },
+    notify: false,
+    // tunnel: true,
+    // tunnel: "basovich" //Demonstration page: http://basovich.localtunnel.me
+  });
+  browserSync.watch('build', browserSync.reload)
+});
+
 
 function style() {
   return gulp.src('./src/scss/**/*.scss')
@@ -60,4 +76,6 @@ gulp.task('build', gulp.series(cleaner,
   gulp.parallel(style,html,js,images)
 ));
 
-gulp.task('dev', gulp.series('build', 'watch'));
+gulp.task('dev', gulp.series('build',
+  gulp.parallel('watch', 'server')
+));
