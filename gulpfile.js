@@ -20,7 +20,6 @@ gulp.task('server', function() {
     // tunnel: true,
     // tunnel: "basovich" //Demonstration page: http://basovich.localtunnel.me
   });
-  browserSync.watch('build', browserSync.reload)
 });
 
 
@@ -34,7 +33,10 @@ function style() {
       prefix: ''
     }))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./build/css'));
+    .pipe(gulp.dest('./build/css'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 }
 
 function watch() {
@@ -50,18 +52,27 @@ function cleaner() {
 function html() {
   return gulp.src('./src/*.html')
     .pipe(rigger())
-    .pipe(gulp.dest('build/'));
+    .pipe(gulp.dest('build/'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 }
 
 function js() {
   return gulp.src('./src/js/*.js')
     .pipe(rigger())
-    .pipe(gulp.dest('build/js/'));
+    .pipe(gulp.dest('build/js/'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 }
 
 function images() {
   return gulp.src('./src/img/*')
-    .pipe(gulp.dest('build/img/'));
+    .pipe(gulp.dest('build/img/'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 }
 
 gulp.task('sass', style);
