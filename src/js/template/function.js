@@ -1,4 +1,5 @@
-export default function(a, b = 23) {
+function sum(a, b = 23) {
     return a + b;
 };
 
+export {sum};

@@ -10,9 +10,9 @@ body {
 
 h1 {
     font-size: 26px;
-    color: red;
+    color: rgb(255, 0, 0);
 
     @media (max-width: 1200px) {
         font-size: 22px;
-    }
+    } 
 }
