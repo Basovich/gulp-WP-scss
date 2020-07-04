@@ -1,12 +1,18 @@
-@import "vars";
-@import "libs";
-@import "base";
-@import "grid";
-@import "modifiers";
+body {
+    font-size: 16px;  
+    display: flex;
+    color: red;
 
+    @media (max-width: 1200px) {
+        font-size: 14px;
+    }    
+}
 
-/**
-* Template
-*/
-@import "template/header";
-@import "template/footer";
+h1 {
+    font-size: 26px;
+    color: red;
+
+    @media (max-width: 1200px) {
+        font-size: 22px;
+    }
+}

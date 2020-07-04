@@ -1,5 +1,0 @@
-$(function () {
-
-//= scripts/menu.js
-
-});
