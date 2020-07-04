@@ -45,9 +45,8 @@ const path = {
     clean: './' + app_folrder + '/'
 }
 
+// Меняем при разном режиме разработки
 const isDev = true;
-const isProd = !isDev;
-
 
 //Конфиг для webpack
 const webConfig = {
