@@ -97,6 +97,7 @@ const css = () => {
             }).on('error', scss.logError)
         )
         .pipe(autoprefixer({
+            grid: true,
             overrideBrowserslist: [
                 "last 10 versions",
                 "ie 9-11"
@@ -122,8 +123,6 @@ const js = () => {
 
 const images = () => {
     return src(path.src.img)
-        .pipe(dest(path.build.img))
-        .pipe(src(path.src.img))
         .pipe(imagemin({
             interlaced: true,
             progressive: true,
