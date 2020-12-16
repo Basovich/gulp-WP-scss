@@ -13,11 +13,11 @@
   "author": "Basovich",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "babel-loader": "^8.1.0",
-    "browser-sync": "^2.26.7",
-    "del": "^5.1.0",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
+    "browser-sync": "^2.26.13",
+    "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-clean-css": "^4.3.0",
@@ -26,9 +26,9 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
-    "gulp-sourcemaps": "^2.6.5",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-ttf2woff2": "^3.0.0",
-    "webpack": "^4.43.0",
-    "webpack-stream": "^5.2.1"
+    "webpack": "^5.10.3",
+    "webpack-stream": "^6.1.1"
   }
 }
