@@ -12,7 +12,7 @@ const clean_css = require('gulp-clean-css');
 const rename = require("gulp-rename");
 const webpack = require('webpack-stream');
 const imagemin = require('gulp-imagemin');
-const ttf2woff2 = require('gulp-ttf2woff2');
+
 
 
 // Папки с ресурсами
@@ -25,22 +25,22 @@ const path = {
         html: src_folder + '/*.html',
         css: src_folder + '/scss/main.scss',
         js: src_folder + '/js/main.js',
-        img: src_folder + '/img/**/*',
-        fonts: src_folder + '/fonts/**/*.ttf'
+        img: src_folder + '/img/**/*',        
+        fonts: src_folder + '/fonts/**/*',        
     },
     build: {
         html: app_folrder + '/',
         css: app_folrder + '/css/',
         js: app_folrder + '/js/',
         img: app_folrder + '/img/',
-        fonts: app_folrder + '/fonts/'
+        fonts: app_folrder + '/fonts/',       
     },
     watch: {
         html: src_folder + '/**/*.html',
         css: src_folder + '/scss/**/*.scss',
         js: src_folder + '/js/**/*.js',
-        img: src_folder + '/img/**/*',
-        fonts: src_folder + '/fonts/**/*.ttf'
+        img: src_folder + '/img/**/*',       
+        fonts: src_folder + '/fonts/**/*',       
     },
     clean: './' + app_folrder + '/'
 }
@@ -50,8 +50,11 @@ const isDev = true;
 
 //Конфиг для webpack
 const webConfig = {
+    // entry: {
+    //     app: path.src.js    
+    // },
     output: {
-        filename: 'main.min.js',
+        filename: './' + 'main.min.js',
     },
     module: {
         rules: [{
@@ -60,7 +63,9 @@ const webConfig = {
             use: {
                 loader: 'babel-loader',
                 options: {
-                    presets: ['@babel/preset-env']
+                    presets: [
+                        '@babel/preset-env'
+                    ]
                 }
             }
         }]
@@ -85,6 +90,12 @@ const html = () => {
     return src(path.src.html)
         .pipe(fileinclude())
         .pipe(dest(path.build.html))
+        .pipe(browserSync.stream())
+}
+
+const fonts = () => {
+    return src(path.src.fonts)       
+        .pipe(dest(path.build.fonts))
         .pipe(browserSync.stream())
 }
 
@@ -144,12 +155,14 @@ const watchFile = () => {
     gulp.watch([path.watch.css], css);
     gulp.watch([path.watch.js], js);
     gulp.watch([path.watch.img], images);
+    gulp.watch([path.watch.fonts], fonts);
 }
 
-const build = gulp.series(clean, gulp.parallel(html, css, js, images));
+const build = gulp.series(clean, gulp.parallel(html, fonts, css, js, images));
 const watch = gulp.parallel(build, watchFile, browserSyncInit);
 
 exports.html = html;
+exports.fonts = fonts;
 exports.css = css;
 exports.js = js;
 exports.images = images;
