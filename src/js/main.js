@@ -1,6 +1,11 @@
+// assets
+import './assets/polyffils/polyfills-closest';
+import './assets/polyffils/polyfills-customevent';
 import 'core-js/stable/dom-collections/for-each';
-import {sum} from './components/function.js';
+
+// main function
+import {test} from './components/function';
 
 
 
-console.log(sum());
+console.log(test());
