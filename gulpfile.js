@@ -14,7 +14,6 @@ const webpack = require('webpack-stream');
 const imagemin = require('gulp-imagemin');
 
 
-
 // Папки с ресурсами
 const app_folrder = require('path').basename(__dirname);
 const src_folder = 'src';
@@ -24,8 +23,8 @@ const path = {
     src: {
         html: src_folder + '/*.html',
         css: src_folder + '/scss/main.scss',
-        js: src_folder + '/js/main.js',
-        img: src_folder + '/img/**/*',        
+        js: src_folder + '/js/*.js',
+        img: src_folder + '/img/**/*',
         fonts: src_folder + '/fonts/**/*',        
     },
     build: {
@@ -50,11 +49,12 @@ const isDev = true;
 
 //Конфиг для webpack
 const webConfig = {
-    // entry: {
-    //     app: path.src.js    
-    // },
+    entry: {
+        main: './src/js/main.js',
+        about: './src/js/about.js',
+    },
     output: {
-        filename: './' + 'main.min.js',
+        filename: '[name].min.js'
     },
     module: {
         rules: [{
@@ -63,9 +63,7 @@ const webConfig = {
             use: {
                 loader: 'babel-loader',
                 options: {
-                    presets: [
-                        '@babel/preset-env'
-                    ]
+                    presets: ['@babel/preset-env']
                 }
             }
         }]
@@ -73,6 +71,7 @@ const webConfig = {
     mode: isDev ? 'development' : 'production',
     devtool: isDev ? 'eval-source-map' : 'none'
 }
+
 
 // Все таски
 const browserSyncInit = () => {

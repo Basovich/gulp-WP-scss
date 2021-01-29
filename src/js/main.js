@@ -13,5 +13,5 @@ window.addEventListener('load', onLoadMain);
 
 function onLoadMain() {
     initAnimationStopper();
-    console.log(test());
+    test();
 }

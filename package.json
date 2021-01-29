@@ -10,10 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/Basovich/gulp-simple.git"
   },
-  "browserslist": "> 1%, IE 10",
+  "browserslist": "> 0.25%, IE 10",
   "author": "Basovich",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "babel-loader": "^8.2.2",
@@ -32,6 +33,6 @@
     "webpack-stream": "^6.1.1"
   },
   "dependencies": {
-    "core-js": "^3.8.1"
+    "core-js": "^3.8.3"
   }
 }
